@@ -1,0 +1,20 @@
+{
+    "hardware":{
+        "PIXEL_COUNT": 28,
+        "SPI_PORT": 0,
+        "SPI_DEVICE": 0,
+        "RGB_ORDER": "RBG"
+    },
+    "calibration":{
+        "red": 0.32,
+        "blue": 0.2,
+        "green": 1
+    },
+    "starter":{
+        "effect": "static",
+        "color": "blue",
+        "sequence": 7,
+        "maximize": true,
+        "luminosity": 1
+    }
+}

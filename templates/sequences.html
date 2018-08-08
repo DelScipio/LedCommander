@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+    <p>
+        {% for l in listix %}
+        <p>
+            <a href="/sequences/{{l}}"><button type="button" class="btn btn-primary btn-lg btn-block">{{l}}</button></a>
+        </p>
+        {% endfor %}
+    </p>
+    <p>
+        <a href="/"><button type="button" class="btn btn-secundary btn-lg btn-block">Home</button></a>
+    </p>
+
+</div>
+{% endblock body %}

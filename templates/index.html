@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-9">
+                    <h1>Effects</h1>
+                    <p>
+                        <a href="/uniform" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Solid</a>
+                    </p>
+                    <p>
+                        <a href="/rainbow" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Rainbow</a>
+                    </p>
+                    <p>
+                        <a href="/random" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Random</a>
+                    </p>
+                    <p>
+                        <a href="/blink" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Blink</a>
+                    </p>
+                </div>
+                <div class="col-3">
+                    {% include "options.html" %}
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock body %}
