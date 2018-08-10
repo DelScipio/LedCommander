@@ -96,5 +96,12 @@ def blink():
     leds.start()
     return redirect("/")
 
+@app.route("/rswirl")
+def rswirl():
+    leds.stop()
+    leds.vars.effect = "rswirl"
+    leds.start()
+    return redirect("/")
+
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host='0.0.0.0')

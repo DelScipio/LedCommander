@@ -118,6 +118,7 @@ class Effects():
                     break
 
     def random_group_effect(self):
+        
         if self.vars.sequences == 1:
             listapixels = [-2, -2, -2, -2, -2]
         elif self.vars.sequences == 2 or self.vars.sequences == 3:
@@ -174,8 +175,63 @@ class Effects():
                 self.pixels.show()
                 time.sleep(0.05)
             #Wait
-            for i in range(5):
+            for i in range(10):
                 if self.vars.running_effect == False:
                     break
                 else:
-                    time.sleep(1)
+                    time.sleep(0.5)
+
+    def appear_from_back(self):
+        while self.vars.running_effect:
+            color = self.name_to_rgb(self.vars.color)
+            color = self.calibration(color)
+            for i in range(self.vars.PIXEL_COUNT):
+                for j in reversed(range(i, self.vars.PIXEL_COUNT)):
+                    
+                    self.pixels.clear()
+                    # first set all pixels at the begin
+                    for k in range(i):
+                        self.pixels.set_pixel(k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+                    # set then the pixel at position j
+                    self.pixels.set_pixel(j, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+                    self.pixels.show()
+                    time.sleep(0.02)
+            for i in reversed(range(self.vars.PIXEL_COUNT)):
+                for j in range(i, self.vars.PIXEL_COUNT):
+                    
+                    self.pixels.clear()
+                    # first set all pixels at the begin
+                    for k in reversed(range(i)):
+                        self.pixels.set_pixel( k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+                    # set then the pixel at position j
+                    self.pixels.set_pixel(j, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
+                    self.pixels.show()
+                    time.sleep(0.02)
+
+    def rainbow_swirl(self):
+        step = 1/self.vars.PIXEL_COUNT
+
+        for p in range(self.vars.PIXEL_COUNT):
+            ncolor = colorsys.hsv_to_rgb(step*p, 1, 1)
+            rgbcolor = []
+            #Get 255 values of colour
+            for c in ncolor:
+                rgbcolor.append(c*255)
+
+            rgbcolor = self.calibration(rgbcolor)
+            
+            self.pixels.set_pixel_rgb(p, int(rgbcolor[0]), int(rgbcolor[1]), int(rgbcolor[2]))
+
+            self.pixels.show()
+        while self.vars.running_effect:
+            for c in range(self.vars.PIXEL_COUNT):
+                for p in range(self.vars.PIXEL_COUNT):
+                    rgbtogive = self.pixels.get_pixel_rgb((p+1)%self.vars.PIXEL_COUNT)
+                    self.pixels.set_pixel_rgb(p, rgbtogive[0], rgbtogive[1], rgbtogive[2])
+                self.pixels.show()
+
+                for i in range(2):
+                    if self.vars.running_effect == False:
+                        break
+                    else:
+                        time.sleep(0.03)

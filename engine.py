@@ -17,6 +17,12 @@ class Engine:
         if self.vars.effect == "random":
             self.a = threading.Thread(target=self.effects.random_group_effect)
             self.a.start()
+        if self.vars.effect == "blink":
+            self.a = threading.Thread(target=self.effects.appear_from_back)
+            self.a.start()
+        if self.vars.effect == "rswirl":
+            self.a = threading.Thread(target=self.effects.rainbow_swirl)
+            self.a.start()
         
     def stop(self):
         #Stop thread
