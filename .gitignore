@@ -335,3 +335,4 @@ lib
 share
 pyvenv.cfg
 __pycache__
+test.py

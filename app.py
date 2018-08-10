@@ -15,7 +15,6 @@ def index():
 def on():
     leds.stop()
     leds.start()
-
     return redirect("/")
 
 @app.route("/off")
