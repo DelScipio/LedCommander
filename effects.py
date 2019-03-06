@@ -212,6 +212,7 @@ class Effects():
                     time.sleep(0.02)
 
     def rainbow_swirl(self):
+        maxer = False
         step = 1/self.vars.PIXEL_COUNT
 
         for p in range(self.vars.PIXEL_COUNT):
@@ -221,7 +222,7 @@ class Effects():
             for c in ncolor:
                 rgbcolor.append(c*255)
 
-            rgbcolor = self.calibration(rgbcolor)
+            rgbcolor = self.calibration(rgbcolor, maxer)
             
             self.pixels.set_pixel_rgb(p, int(rgbcolor[0]), int(rgbcolor[1]), int(rgbcolor[2]))
 
