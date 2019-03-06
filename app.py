@@ -40,9 +40,9 @@ def sequences():
     listix = []
 
     for i in range(2,leds.vars.PIXEL_COUNT):
-        calc = pixels/i
+        calc = leds.vars.PIXEL_COUNT/i
 
-        if pixels % calc == 0 and calc.is_integer():
+        if leds.vars.PIXEL_COUNT % calc == 0 and calc.is_integer():
             print(" %d -- %.2f" % (i,calc))
             listix.append(i)
 
