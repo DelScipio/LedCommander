@@ -237,4 +237,4 @@ class Effects():
                     if self.vars.running_effect == False:
                         break
                     else:
-                        time.sleep(0.06)
+                        time.sleep(0.5)
