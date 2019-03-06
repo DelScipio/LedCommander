@@ -55,7 +55,7 @@ class Effects():
         #return floats
         return [rgblist[0]*multiplier, rgblist[1]*multiplier, rgblist[2]*multiplier]
 
-    def calibration(self, rgblist):
+    def calibration(self, rgblist, maxer= True):
         #Multiply for calibration
         templist = []
         rgblist[0] = rgblist[0]*self.vars.redcal
@@ -77,8 +77,9 @@ class Effects():
         rgblist = templist
 
         #Maximize colors to 255 in the biggest one if required (self.maximize)
-        if self.vars.maximize:
-            rgblist = self.maximizer(rgblist)
+        if maxer:
+            if self.vars.maximize:
+                rgblist = self.maximizer(rgblist)
 
         #Get luminosity and/or convert to int
         if self.vars.luminosity < 1:
@@ -125,7 +126,8 @@ class Effects():
     def random_group_effect(self):
         
         listapixels = []
-
+        maxer = False
+        #Create a groups of number of sequences
         for i in range(int(self.vars.PIXEL_COUNT/self.vars.sequences)):
             listapixels.append(-2)
 
@@ -138,7 +140,7 @@ class Effects():
             #Get 255 values of colour
             for c in rcolor:
                 rgbcolor.append(c*255)
-            rgbcolor = self.calibration(rgbcolor)
+            rgbcolor = self.calibration(rgbcolor, maxer)
 
             #Decrease intensity
             if rled in listapixels:
