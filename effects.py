@@ -63,10 +63,14 @@ class Effects():
         rgblist[2] = rgblist[2]*self.vars.greencal
         #set colour sequence RGB, RBG...
         for let in self.vars.RGB_ORDER:
+            #Get Letter by letter and order.
+            #RED
             if let == "R":
                 templist.append(rgblist[0])
+            #BLUE
             elif let == "B":
                 templist.append(rgblist[1])
+            #Green
             else:
                 templist.append(rgblist[2])
 
@@ -88,10 +92,11 @@ class Effects():
         return rgblist
 
     def static_effect(self):
+        # Unique Colour
         while self.vars.running_effect:
             rgbcolor = self.name_to_rgb(self.vars.color)
             rgbcolor = self.calibration(rgbcolor)
-            #Refresh color everytime to avoid interferences in some situations
+            #Refresh color everytime to avoid interferences in some situations and descoloration
             for p in range(self.vars.PIXEL_COUNT):
                 self.pixels.set_pixel_rgb(p, rgbcolor[0], rgbcolor[1], rgbcolor[2])
             self.pixels.show()
@@ -103,7 +108,7 @@ class Effects():
         while self.vars.running_effect:
             #For that divides 1 by steps to change one color at the time
             for c in range(int(1/step)):
-                #Convert HSV( easy to use) to RGB
+                #Convert HSV( easier to use) to RGB
                 hsv_rgb = colorsys.hsv_to_rgb(c*step, 1, 1 )
                 #Converts 1 to 255
                 rgbcolor= [hsv_rgb[0]*255, hsv_rgb[2]*255, hsv_rgb[1]*255]
