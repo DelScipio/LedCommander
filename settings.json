@@ -1,6 +1,6 @@
 {
     "hardware":{
-        "PIXEL_COUNT": 28,
+        "PIXEL_COUNT": 30,
         "SPI_PORT": 0,
         "SPI_DEVICE": 0,
         "RGB_ORDER": "RBG"
