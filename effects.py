@@ -124,14 +124,10 @@ class Effects():
 
     def random_group_effect(self):
         
-        if self.vars.sequences == 1:
-            listapixels = [-2, -2, -2, -2, -2]
-        elif self.vars.sequences == 2 or self.vars.sequences == 3:
-            listapixels = [-2, -2, -2, -2]
-        elif self.vars.sequences >= 4:
-            listapixels = [-2, -2]
-        elif self.vars.sequences >=14:
-            listapixels = [0, 1]
+        listapixels = []
+
+        for i in range(int(self.vars.PIXEL_COUNT/self.vars.sequences)):
+            listapixels.append(-2)
 
         while self.vars.running_effect == True:
             #Get pixel

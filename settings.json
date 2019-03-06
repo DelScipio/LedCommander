@@ -13,7 +13,7 @@
     "starter":{
         "effect": "static",
         "color": "blue",
-        "sequence": 7,
+        "sequence": 17,
         "maximize": true,
         "luminosity": 1
     }
