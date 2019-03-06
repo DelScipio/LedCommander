@@ -126,6 +126,7 @@ class Effects():
     def random_group_effect(self):
         
         listapixels = []
+        #To avoid some colours being more powerfull than others and overlap them
         maxer = False
         #Create a groups of number of sequences
         for i in range(int(self.vars.PIXEL_COUNT/self.vars.sequences)):
@@ -212,6 +213,7 @@ class Effects():
                     time.sleep(0.02)
 
     def rainbow_swirl(self):
+        #Because some colours would be brighter than others
         maxer = False
         step = 1/self.vars.PIXEL_COUNT
 
