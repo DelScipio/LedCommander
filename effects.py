@@ -185,33 +185,6 @@ class Effects():
                 else:
                     time.sleep(0.5)
 
-    def appear_from_back(self):
-        while self.vars.running_effect:
-            color = self.name_to_rgb(self.vars.color)
-            color = self.calibration(color)
-            for i in range(self.vars.PIXEL_COUNT):
-                for j in reversed(range(i, self.vars.PIXEL_COUNT)):
-                    
-                    self.pixels.clear()
-                    # first set all pixels at the begin
-                    for k in range(i):
-                        self.pixels.set_pixel(k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
-                    # set then the pixel at position j
-                    self.pixels.set_pixel(j, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
-                    self.pixels.show()
-                    time.sleep(0.02)
-            for i in reversed(range(self.vars.PIXEL_COUNT)):
-                for j in range(i, self.vars.PIXEL_COUNT):
-                    
-                    self.pixels.clear()
-                    # first set all pixels at the begin
-                    for k in reversed(range(i)):
-                        self.pixels.set_pixel( k, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
-                    # set then the pixel at position j
-                    self.pixels.set_pixel(j, Adafruit_WS2801.RGB_to_color( color[0], color[1], color[2] ))
-                    self.pixels.show()
-                    time.sleep(0.02)
-
     def rainbow_swirl(self):
         #Because some colours would be brighter than others
         maxer = False
