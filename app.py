@@ -38,9 +38,14 @@ def luminosity(lum):
 @app.route("/sequences")
 def sequences():
     listix = []
-    for i in range(1, leds.vars.PIXEL_COUNT):
-        if leds.vars.PIXEL_COUNT%i == 0:
+
+    for i in range(2,leds.vars.PIXEL_COUNT):
+        calc = pixels/i
+
+        if pixels % calc == 0 and calc.is_integer():
+            print(" %d -- %.2f" % (i,calc))
             listix.append(i)
+
     return render_template("sequences.html", listix=listix)
 
 @app.route("/sequences/<int:seqs>")
