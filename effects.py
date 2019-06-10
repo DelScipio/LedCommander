@@ -143,10 +143,17 @@ class Effects():
         #
         #Test code procede with care!!!!
 
+        #Split the number of groups in 2 never allow more lights that the half of the total group, execpt is is one
+
+        ############## TODO OVERRIDE OPTION ON SETTINGS SO 1 Blink at time if 1
+        
         number_of_groups = self.vars.PIXEL_COUNT/self.vars.sequences
         middle_of_groups = round(number_of_groups/2)
-        while len(listapixels)>middle_of_groups:
-            del listapixels[0]
+        if middle_of_groups == 1:
+            pass
+        else:
+            while len(listapixels)>middle_of_groups:
+                del listapixels[0]
 
 
 
