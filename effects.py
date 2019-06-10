@@ -103,6 +103,7 @@ class Effects():
             self.pixels.show()
             time.sleep(0.1)
 
+
     def rainbow_effect(self):
         #How much it increses everytime. Calculated to make it efficient
         step = 0.0013
@@ -132,6 +133,23 @@ class Effects():
         for i in range(int(self.vars.PIXEL_COUNT/self.vars.sequences)):
             listapixels.append(-2)
 
+        
+
+        ###### TODO 
+        #
+        #   The script is adding without limits so all ranges can be on all the time 5 groups 5 different colours possible 
+        #   Must reduce the amount of light at the same time, because otherwise wil be a mesh of 
+        #   lights and only white would be seen. 
+        #
+        #Test code procede with care!!!!
+
+        number_of_groups = self.vars.PIXEL_COUNT/self.vars.sequences
+        middle_of_groups = round(number_of_groups/2)
+        while len(listapixels)>middle_of_groups:
+            del listapixels[0]
+
+
+
         while self.vars.running_effect == True:
             #Get pixel
             rled = random.randint(0, self.vars.PIXEL_COUNT/self.vars.sequences - 1 )
@@ -158,6 +176,7 @@ class Effects():
                 listapixels.append(rled)
             
             #Dimm
+
             try:
                 for l in range(80,0,-1):
                     ll = 80/l
